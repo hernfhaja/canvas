@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Canvas to image</h1>
+    <button type="button" id="btnDisplay">display</button>
+    <button type="button" id="btnDownload">Download</button>
+    <canvas
+      id="myCanvas"
+      width="2480"
+      height="1653"
+      style="border: 2px solid rgb(247, 0, 0)"
+    ></canvas>
+    <!-- <img
+      id="imgConverted"
+      src="https://drive.google.com/uc?export=view&id=19wXFgEuIApWJ5A-8oyFU99C995TdbsM7"
+      style="border: 2px solid #00f; margin-left: 10px; width: 400px"
+    /> -->
+
+    <script>
+      const btnDisplay = document.querySelector("#btnDisplay");
+      const btnDownload = document.querySelector("#btnDownload");
+      //   const imgConverted = document.querySelector("#imgConverted");
+      const myCanvas = document.querySelector("#myCanvas");
+      const ctx = myCanvas.getContext("2d");
+      let imgObj = new Image();
+
+      imgObj.crossOrigin = "Anonymous";
+      imgObj.onload = function () {
+        ctx.drawImage(imgObj, 0, 0);
+        ctx.fillText("นาย วรมันต์ วัฒนา", 800, 500);
+        // localStorage.setItem("savedImageData", canvas.toDataURL("image/png"));
+      };
+
+      imgObj.src =
+        "https://drive.google.com/uc?export=view&id=1KEHBiFMUeev2wWi5Fqdd2IMBdOS6-WNe";
+
+      ctx.font = "120px Roboto";
+      ctx.fillStyle = "black";
+      //   ctx.fillText("dcode", 200, 100);
+
+      btnDisplay.addEventListener("click", function () {
+        const dataURI = myCanvas.toDataURL();
+        console.log(dataURI);
+        imgConverted.src = dataURI;
+      });
+
+      btnDownload.addEventListener("click", function () {
+        console.log("download");
+        if (window.navigator.msSaveBlob) {
+          window.navigator.msSaveBlob(myCanvas.msToBlob(), "canvas-image.png");
+        } else {
+          const a = document.createElement("a");
+
+          document.body.appendChild(a);
+          a.href = myCanvas.toDataURL(a);
+          a.download = "canvas-image.png";
+          a.click();
+        }
+      });
+    </script>
+  </body>
+</html>
