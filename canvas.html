@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   </head>
   <body>
-    <h1>เกียรติบัตรออนไลน์</h1>
-    <button type="button" id="btnDownload">ดาวน์โหลด</button>
-    <canvas
-      id="myCanvas"
-      width="2480"
-      height="1653"
-      style="border: 2px solid rgb(247, 0, 0)"
-    ></canvas>
+    <div class="p-5">
+      <h1 class="text-3xl font-bold p-0 mt-3">ดาวน์โหลดเกียรติบัตรออนไลน์</h1>
+      <button
+        class="bg-orange-300 py-3 px-5 rounded-lg mt-5 shadow-xl text-lg font-bold"
+        type="button"
+        id="btnDownload"
+      >
+        ดาวน์โหลด
+      </button>
+      <canvas class="mt-5" id="myCanvas" width="2480" height="1653"></canvas>
+    </div>
+
     <!-- <img
       id="imgConverted"
       src="https://drive.google.com/uc?export=view&id=19wXFgEuIApWJ5A-8oyFU99C995TdbsM7"
@@ -66,7 +71,7 @@
 
           document.body.appendChild(a);
           a.href = myCanvas.toDataURL(a);
-          a.download = "canvas-image.png";
+          a.download = pname + fname + ".png";
           a.click();
         }
       });

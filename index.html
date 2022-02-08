@@ -11,26 +11,78 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <h1>เกียรติบัตรออนไลน์</h1>
+  <body class="bg-blue-500 p-0">
+    <div class="text-center p-4 bg-yellow-200 m-10 rounded-2xl">
+      <h1 class="text-3xl font-bold p-0 mt-3">เกียรติบัตรออนไลน์</h1>
 
-    <form action="canvas.html" method="get">
-      <label for="pname">คำนำหน้า :</label><br />
-      <input type="text" id="fname" name="pname" /><br />
-      <label for="fname">ชื่อ</label><br />
-      <input type="text" id="fname" name="fname" /><br />
-      <label for="lname">นามสกุล</label><br />
-      <input type="text" id="lname" name="lname" /><br /><br />
-      <input type="submit" id="btnSend" value="ออกเกียร์ติบัตร" />
-    </form>
+      <form
+        action="canvas.html"
+        method="get"
+        class="flex-row sm:text-center justify-center pt-4"
+      >
+        <div class="p-3 justify-center">
+          <div class="">
+            <label class="" for="pname">คำนำหน้า </label><br />
+          </div>
+          <div class="">
+            <input
+              class="mt-2 rounded-lg shadow-xl w-4/5 h-8 text-center"
+              type="text"
+              id="fname"
+              name="pname"
+            />
+          </div>
+        </div>
 
-    <script>
-      // btnSend.addEventListener("click", function () {
-      //   console.log("click");
-      //   window.location.href = "canvas.html";
-      // });
-    </script>
+        <div class="p-3 justify-center">
+          <div class=""><label class="" for="fname">ชื่อ</label><br /></div>
+
+          <div class="">
+            <input
+              class="mt-2 rounded-lg shadow-xl w-4/5 h-8 text-center"
+              type="text"
+              id="fname"
+              name="fname"
+            />
+          </div>
+        </div>
+
+        <div class="p-3 justify-center">
+          <div class=""><label class="" for="lname">นามสกุล</label><br /></div>
+          <div class="">
+            <input
+              class="mt-2 rounded-lg shadow-xl w-4/5 h-8 text-center"
+              type="text"
+              id="lname"
+              name="lname"
+            />
+          </div>
+        </div>
+
+        <input
+          class="bg-orange-300 py-3 px-5 rounded-lg mt-5 shadow-xl text-lg font-bold"
+          type="submit"
+          id="btnSend"
+          value="ออกเกียร์ติบัตร"
+        />
+      </form>
+
+      <script>
+        // btnSend.addEventListener("click", function () {
+        //   console.log("click");
+        //   window.location.href = "canvas.html";
+        // });
+      </script>
+    </div>
   </body>
 </html>
