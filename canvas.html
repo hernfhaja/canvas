@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>เกียรติบัตรออนไลน์</h1>
+    <button type="button" id="btnDownload">ดาวน์โหลด</button>
+    <canvas
+      id="myCanvas"
+      width="2480"
+      height="1653"
+      style="border: 2px solid rgb(247, 0, 0)"
+    ></canvas>
+    <!-- <img
+      id="imgConverted"
+      src="https://drive.google.com/uc?export=view&id=19wXFgEuIApWJ5A-8oyFU99C995TdbsM7"
+      style="border: 2px solid #00f; margin-left: 10px; width: 400px"
+    /> -->
+
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        console.log(name);
+        console.log(url);
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      const pname = getParameterByName("pname");
+      const fname = getParameterByName("fname");
+
+      const btnDownload = document.querySelector("#btnDownload");
+      const myCanvas = document.querySelector("#myCanvas");
+      const ctx = myCanvas.getContext("2d");
+      let imgObj = new Image();
+
+      imgObj.crossOrigin = "Anonymous";
+      imgObj.onload = function () {
+        ctx.drawImage(imgObj, 0, 0);
+        ctx.fillText(pname + "   " + fname + "   " + lname, 800, 500);
+      };
+
+      imgObj.src =
+        "https://drive.google.com/uc?export=view&id=1KEHBiFMUeev2wWi5Fqdd2IMBdOS6-WNe";
+
+      ctx.font = "60px Roboto";
+      ctx.fillStyle = "black";
+
+      // Click download
+      btnDownload.addEventListener("click", function () {
+        console.log("download");
+        if (window.navigator.msSaveBlob) {
+          window.navigator.msSaveBlob(myCanvas.msToBlob(), "canvas-image.png");
+        } else {
+          const a = document.createElement("a");
+
+          document.body.appendChild(a);
+          a.href = myCanvas.toDataURL(a);
+          a.download = "canvas-image.png";
+          a.click();
+        }
+      });
+    </script>
+  </body>
+</html>
