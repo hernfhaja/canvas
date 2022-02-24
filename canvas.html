@@ -41,6 +41,7 @@
           results = regex.exec(url);
         if (!results) return null;
         if (!results[2]) return "";
+        console.log(results);
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
 
@@ -82,11 +83,11 @@
       imgObj.crossOrigin = "Anonymous";
       imgObj.onload = function () {
         ctx.drawImage(imgObj, 0, 0);
-        ctx.fillText(pname + "   " + fname + "   " + lname, 800, 500);
+        ctx.fillText(pname + "   " + fname + "   " + lname, 500, 550);
       };
 
       imgObj.src =
-        "https://drive.google.com/uc?export=view&id=1KEHBiFMUeev2wWi5Fqdd2IMBdOS6-WNe";
+        "https://drive.google.com/uc?export=view&id=1SxmYDjJ1ha53VSWSm89rcVZUe6szDqxF";
 
       ctx.font = "60px Roboto";
       ctx.fillStyle = "black";
