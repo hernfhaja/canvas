@@ -49,6 +49,11 @@
       const lname = getParameterByName("lname");
       const pname = getParameterByName("pname");
       const fname = getParameterByName("fname");
+      const grade = getParameterByName("lname");
+      const phone = getParameterByName("phone");
+      const phoneCellular = getParameterByName("phoneCellular");
+      const address = getParameterByName("address");
+      const zipcode = getParameterByName("zipcode");
 
       const today = new Date();
       const date =
@@ -69,6 +74,11 @@
             คำนำหน้า: pname,
             ชื่อ: fname,
             นามสกุล: lname,
+            ระดับชั้น: grade,
+            เบอร์โทร: phone,
+            เครื่อข่ายมือถือ: phoneCellular,
+            ที่อยู่: address,
+            ระหัสไปรษณีย์: zipcode,
           },
         })
         .then((response) => {
@@ -80,7 +90,7 @@
       const ctx = myCanvas.getContext("2d");
       let imgObj = new Image();
 
-      // imgObj.crossOrigin = "Anonymous";
+      imgObj.crossOrigin = "true";
       imgObj.onload = function () {
         ctx.drawImage(imgObj, 0, 0);
         ctx.fillText(pname + "   " + fname + "   " + lname, 500, 550);
