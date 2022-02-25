@@ -80,7 +80,7 @@
       const ctx = myCanvas.getContext("2d");
       let imgObj = new Image();
 
-      imgObj.crossOrigin = "Anonymous";
+      // imgObj.crossOrigin = "Anonymous";
       imgObj.onload = function () {
         ctx.drawImage(imgObj, 0, 0);
         ctx.fillText(pname + "   " + fname + "   " + lname, 500, 550);
